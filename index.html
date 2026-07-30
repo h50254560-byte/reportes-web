@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok HD Downloader Directo Puro</title>
+    <style>
+        :root {
+            --primary-color: #fe2c55;
+            --secondary-color: #25f4ee;
+            --background: #121212;
+            --card-bg: #1e1e1e;
+            --text: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: var(--primary-color);
+        }
+
+        p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background-color: #2a2a2a;
+            color: #fff;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+
+        .loader {
+            display: none;
+            margin: 20px auto 0 auto;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .status-msg {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .error {
+            color: var(--primary-color);
+        }
+
+        .success {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>TikTok <span>HD Directo</span></h1>
+        <p>Descarga el archivo MP4 directamente a tu dispositivo</p>
+
+        <div class="input-group">
+            <input type="text" id="tiktokUrl" placeholder="Pega el enlace de TikTok aquí...">
+            <button id="btnFetch" onclick="downloadInstant()">Descargar Archivo</button>
+        </div>
+
+        <div class="loader" id="loader"></div>
+        <div class="status-msg" id="statusMessage"></div>
+    </div>
+
+    <script>
+        async function downloadInstant() {
+            const urlInput = document.getElementById('tiktokUrl').value.trim();
+            const btnFetch = document.getElementById('btnFetch');
+            const loader = document.getElementById('loader');
+            const statusMessage = document.getElementById('statusMessage');
+
+            if (!urlInput) {
+                alert('Por favor, ingresa una URL.');
+                return;
+            }
+
+            statusMessage.style.display = 'none';
+            statusMessage.className = 'status-msg';
+            loader.style.display = 'block';
+            btnFetch.disabled = true;
+
+            try {
+                // 1. Obtener el enlace en alta calidad de la API externa
+                const apiUrl = `https://www.tikwm.com/api/?url=${encodeURIComponent(urlInput)}`;
+                const response = await fetch(apiUrl);
+                const result = await response.json();
+
+                if (result.code === 0 && result.data) {
+                    const hdUrl = result.data.hdplay || result.data.play;
+                    if (!hdUrl) throw new Error("No se encontró URL de video");
+
+                    statusMessage.innerText = "Procesando y guardando archivo...";
+                    statusMessage.style.display = 'block';
+
+                    // 2. EL TRUCO: Descargar el archivo directamente como datos binarios (Blob)
+                    // Esto evita que el navegador intente "navegar" o abrir una nueva pestaña externa
+                    const videoResponse = await fetch(hdUrl);
+                    const videoBlob = await videoResponse.blob();
+
+                    // Convertir el bloque binario en un enlace local temporal seguro
+                    const blobUrl = window.URL.createObjectURL(videoBlob);
+
+                    // 3. Crear el activador de descarga forzada
+                    const tempLink = document.createElement('a');
+                    tempLink.href = blobUrl;
+                    tempLink.download = `tiktok_video_${Date.now()}.mp4`; // Le dice al sistema: "Guárdalo"
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+
+                    // Limpiar memoria
+                    document.body.removeChild(tempLink);
+                    window.URL.revokeObjectURL(blobUrl);
+
+                    statusMessage.innerText = "¡Descarga completada!";
+                    statusMessage.classList.add('success');
+                } else {
+                    throw new Error();
+                }
+            } catch (error) {
+                statusMessage.innerText = "Error al procesar el archivo. Revisa el enlace.";
+                statusMessage.classList.add('error');
+                statusMessage.style.display = 'block';
+            } finally {
+                loader.style.display = 'none';
+                btnFetch.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>
