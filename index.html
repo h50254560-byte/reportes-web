@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Reporte Trimestral Consolidado</title>
     <style>
         :root {
@@ -14,14 +15,21 @@
             --text-main: #f0f6fc;
             --text-muted: #8b949e;
             /* Paleta de colores con jerarquía de azules ajustada */
-            --accent-title: #ff7b72; /* Rojo suave para Título Principal */
-            --accent-month: #3b82f6; /* Azul fuerte para los Meses */
-            --accent-medidor: #60a5fa; /* Azul medio para Medidor Principal */
-            --accent-usuarios: #60a5fa; /* Azul medio para Consumo de Usuarios */
-            --accent-resumen: #f0883e; /* Naranja dorado para Resumen Trimestral */
+            --accent-title: #ff7b72;
+            /* Rojo suave para Título Principal */
+            --accent-month: #3b82f6;
+            /* Azul fuerte para los Meses */
+            --accent-medidor: #60a5fa;
+            /* Azul medio para Medidor Principal */
+            --accent-usuarios: #60a5fa;
+            /* Azul medio para Consumo de Usuarios */
+            --accent-resumen: #f0883e;
+            /* Naranja dorado para Resumen Trimestral */
 
-            --accent-user-name: #93c5fd; /* Azul claro para el nombre interno de usuario */
-            --accent-total: #f3b653; /* Ámbar/Amarillo brillante para destacar los totales */
+            --accent-user-name: #93c5fd;
+            /* Azul claro para el nombre interno de usuario */
+            --accent-total: #f3b653;
+            /* Ámbar/Amarillo brillante para destacar los totales */
 
             --accent-green: #2ea043;
             --accent-purple: #db61a2;
@@ -254,237 +262,265 @@
     </style>
 </head>
 
-<div>
-    <body>
-        <div class="report-container">
-            <!-- HEADER -->
-            <div class="report-header">
-                <h1>REPORTE TRIMESTRAL</h1>
-                <p>Periodo: <strong>ABRIL 2026 - JUNIO 2026</strong></p>
+<body>
+    <div class="report-container">
+        <!-- HEADER -->
+        <div class="report-header">
+            <h1>REPORTE TRIMESTRAL2pc</h1>
+            <p>Periodo: <strong>ABRIL 2026 - JUNIO 2026</strong></p>
+        </div>
+
+        <!-- MES: ABRIL 2026 -->
+        <div class="card">
+            <div class="card-title">Mes: Abril 2026</div>
+
+            <div class="section-title-medidor">Medidor Principal</div>
+            <div class="box-medidor">
+                <div class="grid-1col">
+                    <div class="row-item"><span class="label">L. Anterior:</span><span class="val">7,939 kW</span></div>
+                    <div class="row-item"><span class="label">L. Actual:</span><span class="val">8,034 kW</span></div>
+                    <div class="row-item"><span class="label">Consumo Total:</span><span class="val">95 kW</span></div>
+                    <div class="row-item"><span class="label">Recaudado:</span><span class="val">S/ 93.50</span></div>
+                </div>
             </div>
 
-            <!-- MES: ABRIL 2026 -->
-            <div class="card">
-                <div class="card-title">Mes: Abril 2026</div>
+            <div class="section-title-usuarios">Consumo Usuarios</div>
 
-                <div class="section-title-medidor">Medidor Principal</div>
-                <div class="box-medidor">
-                    <div class="grid-1col">
-                        <div class="row-item"><span class="label">L. Anterior:</span><span class="val">7,939 kW</span></div>
-                        <div class="row-item"><span class="label">L. Actual:</span><span class="val">8,034 kW</span></div>
-                        <div class="row-item"><span class="label">Consumo Total:</span><span class="val">95 kW</span></div>
-                        <div class="row-item"><span class="label">Recaudado:</span><span class="val">S/ 93.50</span></div>
+            <!-- JOEL -->
+            <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
+                <div class="user-name">JOEL</div>
+                <div class="grid-2col">
+                    <div class="col-group">
+                        <div class="row-item"><span class="label">L. Ant:</span><span class="val">4,951 kW</span></div>
+                        <div class="row-item"><span class="label">L. Act:</span><span class="val">5,025 kW</span></div>
+                        <div class="row-item"><span class="label">Consumo:</span><span class="val">74 kW</span></div>
                     </div>
-                </div>
-
-                <div class="section-title-usuarios">Consumo Usuarios</div>
-
-                <!-- JOEL -->
-                <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
-                    <div class="user-name">JOEL</div>
-                    <div class="grid-2col">
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">L. Ant:</span><span class="val">4,951 kW</span></div>
-                            <div class="row-item"><span class="label">L. Act:</span><span class="val">5,025 kW</span></div>
-                            <div class="row-item"><span class="label">Consumo:</span><span class="val">74 kW</span></div>
+                    <div class="col-group">
+                        <div class="row-item">
+                            <span class="label">Subtotal:</span><span class="val">S/ 64.9800</span>
                         </div>
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">Subtotal:</span><span class="val">S/ 64.9800</span></div>
-                            <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
-                            <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
-                        </div>
-                        <div class="card-footer-pagar">
-                            <span class="footer-label">Total</span>
-                            <div class="footer-group">
-                                <span class="rounding-tag">r: +0.02</span>
-                                <span class="total-value">S/ 65.00</span>
-                            </div>
-                        </div>
+                        <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                        <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
                     </div>
-                </div>
-
-                <!-- HENRY -->
-                <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
-                    <div class="user-name">HENRY</div>
-                    <div class="grid-2col">
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">L. Ant:</span><span class="val">1,992 kW</span></div>
-                            <div class="row-item"><span class="label">L. Act:</span><span class="val">1,998 kW</span></div>
-                            <div class="row-item"><span class="label">Consumo:</span><span class="val">6 kW</span></div>
-                        </div>
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">Subtotal:</span><span class="val">S/ 7.7100</span></div>
-                            <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
-                            <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
-                        </div>
-                        <div class="card-footer-pagar">
-                            <span class="footer-label">Total</span>
-                            <div class="footer-group">
-                                <span class="rounding-tag">r: +0.09</span>
-                                <span class="total-value">S/ 7.80</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MILTON -->
-                <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
-                    <div class="user-name">MILTON</div>
-                    <div class="grid-2col">
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">L. Ant:</span><span class="val">1,443 kW</span></div>
-                            <div class="row-item"><span class="label">L. Act:</span><span class="val">1,443 kW</span></div>
-                            <div class="row-item"><span class="label">Consumo:</span><span class="val">0 kW</span></div>
-                        </div>
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">Subtotal:</span><span class="val">S/ 2.6600</span></div>
-                            <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
-                            <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
-                        </div>
-                        <div class="card-footer-pagar">
-                            <span class="footer-label">Total</span>
-                            <div class="footer-group">
-                                <span class="rounding-tag">r: +0.04</span>
-                                <span class="total-value">S/ 2.70</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VICTOR -->
-                <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
-                    <div class="user-name">VICTOR</div>
-                    <div class="grid-2col">
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">L. Ant:</span><span class="val">135 kW</span></div>
-                            <div class="row-item"><span class="label">L. Act:</span><span class="val">150 kW</span></div>
-                            <div class="row-item"><span class="label">Consumo:</span><span class="val">15 kW</span></div>
-                        </div>
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">Subtotal:</span><span class="val">S/ 13.2900</span></div>
-                            <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
-                            <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
-                        </div>
-                        <div class="card-footer-pagar">
-                            <span class="footer-label">Total</span>
-                            <div class="footer-group">
-                                <span class="rounding-tag">r: +0.01</span>
-                                <span class="total-value">S/ 15.30</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ELADIO -->
-                <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
-                    <div class="user-name">ELADIO</div>
-                    <div class="grid-2col">
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">L. Ant:</span><span class="val">536 kW</span></div>
-                            <div class="row-item"><span class="label">L. Act:</span><span class="val">536 kW</span></div>
-                            <div class="row-item"><span class="label">Consumo:</span><span class="val">0 kW</span></div>
-                        </div>
-                        <div class="col-group">
-                            <div class="row-item"><span class="label">Subtotal:</span><span class="val">S/ 2.6600</span></div>
-                            <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
-                            <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
-                        </div>
-                        <div class="card-footer-pagar">
-                            <span class="footer-label">Total</span>
-                            <div class="footer-group">
-                                <span class="rounding-tag">r: +0.04</span>
-                                <span class="total-value">S/ 2.70</span>
-                            </div>
+                    <div class="card-footer-pagar">
+                        <span class="footer-label">Total</span>
+                        <div class="footer-group">
+                            <span class="rounding-tag">r: +0.02</span>
+                            <span class="total-value">S/ 65.00</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- RESUMEN TRIMESTRAL -->
-            <div class="card resumen-card">
-                <div class="card-title" style="color: var(--accent-resumen);">Resumen Trimestral Consolidado</div>
-
-                <!-- JOEL -->
-                <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
-                    <div class="resumen-header">
-                        <span class="user-name" style="border:none; margin:0; padding:0; color: var(--accent-resumen);">JOEL</span>
-                        <span class="badge-pagado">PAGADO</span>
+            <!-- HENRY -->
+            <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
+                <div class="user-name">HENRY</div>
+                <div class="grid-2col">
+                    <div class="col-group">
+                        <div class="row-item"><span class="label">L. Ant:</span><span class="val">1,992 kW</span></div>
+                        <div class="row-item"><span class="label">L. Act:</span><span class="val">1,998 kW</span></div>
+                        <div class="row-item"><span class="label">Consumo:</span><span class="val">6 kW</span></div>
                     </div>
-                    <div class="grid-1col">
-                        <div class="row-item"><span class="label">Saldo:</span><span class="val" style="margin-left: auto;">S/ 0.0000</span></div>
-                        <div class="card-footer-medidor">
-                            <span class="footer-label">Total Trimestral</span>
-                            <span class="total-value">S/ 191.60</span>
+                    <div class="col-group">
+                        <div class="row-item">
+                            <span class="label">Subtotal:</span><span class="val">S/ 7.7100</span>
                         </div>
+                        <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                        <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
                     </div>
-                </div>
-
-                <!-- HENRY -->
-                <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
-                    <div class="resumen-header">
-                        <span class="user-name" style="border:none; margin:0; padding:0; color: var(--accent-resumen);">HENRY</span>
-                        <span class="badge-pagado">PAGADO</span>
-                    </div>
-                    <div class="grid-1col">
-                        <div class="row-item"><span class="label">Saldo:</span><span class="val" style="margin-left: auto;">S/ 0.0000</span></div>
-                        <div class="card-footer-medidor">
-                            <span class="footer-label">Total Trimestral</span>
-                            <span class="total-value">S/ 23.80</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MILTON -->
-                <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
-                    <div class="resumen-header">
-                        <span class="user-name" style="border:none; margin:0; padding:0; color: var(--accent-resumen);">MILTON</span>
-                        <span class="badge-pagado">PAGADO</span>
-                    </div>
-                    <div class="grid-1col">
-                        <div class="row-item"><span class="label">Saldo:</span><span class="val" style="color: var(--accent-red); margin-left: auto;">Deuda: S/ 0.1000</span></div>
-                        <div class="card-footer-medidor">
-                            <span class="footer-label">Total Trimestral</span>
-                            <span class="total-value">S/ 8.20</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- VICTOR -->
-                <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
-                    <div class="resumen-header">
-                        <span class="user-name" style="border:none; margin:0; padding:0; color: var(--accent-resumen);">VICTOR</span>
-                        <span class="badge-pagado">PAGADO</span>
-                    </div>
-                    <div class="grid-1col">
-                        <div class="row-item"><span class="label">Saldo:</span><span class="val" style="margin-left: auto;">S/ 0.0000</span></div>
-                        <div class="card-footer-medidor">
-                            <span class="footer-label">Total Trimestral</span>
-                            <span class="total-value">S/ 40.90</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ELADIO -->
-                <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
-                    <div class="resumen-header">
-                        <span class="user-name" style="border:none; margin:0; padding:0; color: var(--accent-resumen);">ELADIO</span>
-                        <span class="badge-pendiente">PENDIENTE</span>
-                    </div>
-                    <div class="grid-1col">
-                        <div class="row-item"><span class="label">Saldo:</span><span class="val" style="margin-left: auto;">S/ 0.0000</span></div>
-                        <div class="card-footer-medidor">
-                            <span class="footer-label">Total Trimestral</span>
-                            <span class="total-value">S/ 10.80</span>
+                    <div class="card-footer-pagar">
+                        <span class="footer-label">Total</span>
+                        <div class="footer-group">
+                            <span class="rounding-tag">r: +0.09</span>
+                            <span class="total-value">S/ 7.80</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="report-footer">
-                Sistema de Cobranza Grupal &bull; V-2.5
+            <!-- MILTON -->
+            <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
+                <div class="user-name">MILTON</div>
+                <div class="grid-2col">
+                    <div class="col-group">
+                        <div class="row-item"><span class="label">L. Ant:</span><span class="val">1,443 kW</span></div>
+                        <div class="row-item"><span class="label">L. Act:</span><span class="val">1,443 kW</span></div>
+                        <div class="row-item"><span class="label">Consumo:</span><span class="val">0 kW</span></div>
+                    </div>
+                    <div class="col-group">
+                        <div class="row-item">
+                            <span class="label">Subtotal:</span><span class="val">S/ 2.6600</span>
+                        </div>
+                        <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                        <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                    </div>
+                    <div class="card-footer-pagar">
+                        <span class="footer-label">Total</span>
+                        <div class="footer-group">
+                            <span class="rounding-tag">r: +0.04</span>
+                            <span class="total-value">S/ 2.70</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VICTOR -->
+            <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
+                <div class="user-name">VICTOR</div>
+                <div class="grid-2col">
+                    <div class="col-group">
+                        <div class="row-item"><span class="label">L. Ant:</span><span class="val">135 kW</span></div>
+                        <div class="row-item"><span class="label">L. Act:</span><span class="val">150 kW</span></div>
+                        <div class="row-item"><span class="label">Consumo:</span><span class="val">15 kW</span></div>
+                    </div>
+                    <div class="col-group">
+                        <div class="row-item">
+                            <span class="label">Subtotal:</span><span class="val">S/ 13.2900</span>
+                        </div>
+                        <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                        <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                    </div>
+                    <div class="card-footer-pagar">
+                        <span class="footer-label">Total</span>
+                        <div class="footer-group">
+                            <span class="rounding-tag">r: +0.01</span>
+                            <span class="total-value">S/ 15.30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ELADIO -->
+            <div class="box-user" style="border-color: rgba(96, 165, 250, 0.25);">
+                <div class="user-name">ELADIO</div>
+                <div class="grid-2col">
+                    <div class="col-group">
+                        <div class="row-item"><span class="label">L. Ant:</span><span class="val">536 kW</span></div>
+                        <div class="row-item"><span class="label">L. Act:</span><span class="val">536 kW</span></div>
+                        <div class="row-item"><span class="label">Consumo:</span><span class="val">0 kW</span></div>
+                    </div>
+                    <div class="col-group">
+                        <div class="row-item">
+                            <span class="label">Subtotal:</span><span class="val">S/ 2.6600</span>
+                        </div>
+                        <div class="row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                        <div class="row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                    </div>
+                    <div class="card-footer-pagar">
+                        <span class="footer-label">Total</span>
+                        <div class="footer-group">
+                            <span class="rounding-tag">r: +0.04</span>
+                            <span class="total-value">S/ 2.70</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </body>
-</div>
+
+        <!-- RESUMEN TRIMESTRAL -->
+        <div class="card resumen-card">
+            <div class="card-title" style="color: var(--accent-resumen);">Resumen Trimestral Consolidado</div>
+
+            <!-- JOEL -->
+            <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
+                <div class="resumen-header">
+                    <span class="user-name"
+                          style="border:none; margin:0; padding:0; color: var(--accent-resumen);">JOEL</span>
+                    <span class="badge-pagado">PAGADO</span>
+                </div>
+                <div class="grid-1col">
+                    <div class="row-item">
+                        <span class="label">Saldo:</span><span class="val"
+                                                               style="margin-left: auto;">S/ 0.0000</span>
+                    </div>
+                    <div class="card-footer-medidor">
+                        <span class="footer-label">Total Trimestral</span>
+                        <span class="total-value">S/ 191.60</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HENRY -->
+            <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
+                <div class="resumen-header">
+                    <span class="user-name"
+                          style="border:none; margin:0; padding:0; color: var(--accent-resumen);">HENRY</span>
+                    <span class="badge-pagado">PAGADO</span>
+                </div>
+                <div class="grid-1col">
+                    <div class="row-item">
+                        <span class="label">Saldo:</span><span class="val"
+                                                               style="margin-left: auto;">S/ 0.0000</span>
+                    </div>
+                    <div class="card-footer-medidor">
+                        <span class="footer-label">Total Trimestral</span>
+                        <span class="total-value">S/ 23.80</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MILTON -->
+            <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
+                <div class="resumen-header">
+                    <span class="user-name"
+                          style="border:none; margin:0; padding:0; color: var(--accent-resumen);">MILTON</span>
+                    <span class="badge-pagado">PAGADO</span>
+                </div>
+                <div class="grid-1col">
+                    <div class="row-item">
+                        <span class="label">Saldo:</span><span class="val"
+                                                               style="color: var(--accent-red); margin-left: auto;">Deuda: S/ 0.1000</span>
+                    </div>
+                    <div class="card-footer-medidor">
+                        <span class="footer-label">Total Trimestral</span>
+                        <span class="total-value">S/ 8.20</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VICTOR -->
+            <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
+                <div class="resumen-header">
+                    <span class="user-name"
+                          style="border:none; margin:0; padding:0; color: var(--accent-resumen);">VICTOR</span>
+                    <span class="badge-pagado">PAGADO</span>
+                </div>
+                <div class="grid-1col">
+                    <div class="row-item">
+                        <span class="label">Saldo:</span><span class="val"
+                                                               style="margin-left: auto;">S/ 0.0000</span>
+                    </div>
+                    <div class="card-footer-medidor">
+                        <span class="footer-label">Total Trimestral</span>
+                        <span class="total-value">S/ 40.90</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ELADIO -->
+            <div class="box-user" style="border-color: rgba(240, 136, 62, 0.25);">
+                <div class="resumen-header">
+                    <span class="user-name"
+                          style="border:none; margin:0; padding:0; color: var(--accent-resumen);">ELADIO</span>
+                    <span class="badge-pendiente">PENDIENTE</span>
+                </div>
+                <div class="grid-1col">
+                    <div class="row-item">
+                        <span class="label">Saldo:</span><span class="val"
+                                                               style="margin-left: auto;">S/ 0.0000</span>
+                    </div>
+                    <div class="card-footer-medidor">
+                        <span class="footer-label">Total Trimestral</span>
+                        <span class="total-value">S/ 10.80</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-footer">
+            Sistema de Cobranza Grupal &bull; Reporte General
+        </div>
+    </div>
+</body>
 
 </html>
