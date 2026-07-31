@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" initial-scale=1.0">
     <title>Reporte Trimestral</title>
     <style>
         :root {
@@ -246,6 +246,25 @@
             font-size: 12px;
             margin-top: 20px;
             margin-bottom: 10px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            /* Asegura que el body ocupe todo el ancho */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            box-sizing: border-box;
+            /* Vital para que el padding no rompa el ancho */
         }
     </style>
 </head>
