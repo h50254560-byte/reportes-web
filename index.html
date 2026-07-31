@@ -1,0 +1,845 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Trimestral Consolidado 2222222</title>
+    <style>
+        :root {
+            --bg-main: #121212;
+            --bg-card: #1E1E1E;
+            --bg-card-alt: #252526;
+            --border-color: #3F3F46;
+            --text-main: #FFFFFF;
+            --text-muted: #9CDCFE;
+            --accent-blue: #0088ED;
+            --accent-total: #4fffff;
+            --accent-green: #4CAF50;
+            --accent-purple: #C586C0;
+            --accent-orange: #CE9178;
+            --accent-red: #F44747;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 6px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .header {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+            .header h1 {
+                margin: 0 0 3px 0;
+                font-size: 18px;
+                color: var(--accent-orange);
+            }
+
+            .header p {
+                margin: 0;
+                color: var(--text-muted);
+                font-size: 11px;
+            }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            text-align: center;
+        }
+
+        .sub-panel {
+            background-color: var(--bg-card-alt);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .sub-panel-title {
+            font-size: 10px;
+            font-weight: bold;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 3px;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            padding: 3px 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.05);
+        }
+
+            .data-row span {
+                color: var(--text-muted);
+            }
+
+            .data-row strong {
+                color: var(--text-main);
+            }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--bg-card-alt);
+            color: var(--text-muted);
+            padding: 6px 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 6px 4px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .font-bold {
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .mobile-card-view {
+            display: none;
+        }
+
+        @media (max-width: 650px) {
+            .table-responsive:not(.resumen-trimestral-wrap) table,
+            .table-responsive:not(.resumen-trimestral-wrap) thead,
+            .table-responsive:not(.resumen-trimestral-wrap) tbody,
+            .table-responsive:not(.resumen-trimestral-wrap) th,
+            .table-responsive:not(.resumen-trimestral-wrap) tr {
+                display: none;
+            }
+
+            .mobile-card-view {
+                display: block;
+            }
+
+            .m-user-card {
+                background-color: var(--bg-card-alt);
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+                margin-bottom: 8px;
+                padding: 8px;
+            }
+
+            .m-username {
+                font-size: 13px;
+                font-weight: bold;
+                text-align: left;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 4px;
+                margin-bottom: 6px;
+            }
+
+            .m-grid-2col {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4px 8px;
+                font-size: 10px;
+            }
+
+            .m-col {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .m-row-item {
+                display: flex;
+                justify-content: space-between;
+            }
+
+                .m-row-item .label {
+                    color: var(--text-muted);
+                }
+
+                .m-row-item .val {
+                    font-weight: bold;
+                    color: var(--text-main);
+                }
+
+            .m-footer-pagar {
+                grid-column: span 2;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 8px;
+                padding-top: 6px;
+                border-top: 1px dashed rgba(255,255,255,0.15);
+            }
+
+            .m-pagar-label {
+                font-size: 12px;
+                font-weight: bold;
+                color: var(--text-muted);
+                text-align: left;
+            }
+
+            .m-right-group {
+                display: flex;
+                align-items: baseline;
+                gap: 8px;
+            }
+
+            .m-redondeo {
+                font-size: 10px;
+                color: var(--accent-purple);
+                font-weight: normal;
+                opacity: 0.8;
+            }
+
+            .m-total-val {
+                font-size: 16px;
+                font-weight: bold;
+                color: var(--accent-total);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>REPORTE TRIMESTRAL 3.5</h1>
+            <p>Periodo: <strong>ABRIL 2026 - JUNIO 2026</strong></p>
+        </div>
+        <div class="card">
+            <div class="card-title">Mes: ABRIL 2026</div>
+
+            <div class="sub-panel">
+                <div class="sub-panel-title">Medidor Principal</div>
+                <div class="data-row"><span>L. Anterior:</span> <strong>7939 kw</strong></div>
+                <div class="data-row"><span>L. Actual:</span> <strong>8034 kw</strong></div>
+                <div class="data-row"><span>Consumo:</span> <strong>95 kw</strong></div>
+                <div class="data-row"><span>Total Pagar:</span> <strong>S/ 90.50</strong></div>
+                <div class="data-row"><span>Recaudado:</span> <strong>S/ 93.50</strong></div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">Nombre</th>
+                            <th class="text-right">Ant</th>
+                            <th class="text-right">Act</th>
+                            <th class="text-right">Kw</th>
+                            <th class="text-right">Pagar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">JOEL</td>
+                            <td class="text-right">4951</td>
+                            <td class="text-right">5025</td>
+                            <td class="text-right">74</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 65.00</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">HENRY</td>
+                            <td class="text-right">1992</td>
+                            <td class="text-right">1998</td>
+                            <td class="text-right">6</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 7.80</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">MILTON</td>
+                            <td class="text-right">1443</td>
+                            <td class="text-right">1443</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 2.70</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">VICTOR</td>
+                            <td class="text-right">135</td>
+                            <td class="text-right">150</td>
+                            <td class="text-right">15</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 15.30</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">ELADIO</td>
+                            <td class="text-right">536</td>
+                            <td class="text-right">536</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 2.70</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mobile-card-view">
+                <div class="m-user-card">
+                    <div class="m-username">JOEL</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">4951</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">5025</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">74</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.02</span>
+                                <span class="m-total-val">S/ 65.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">HENRY</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">1992</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">1998</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">6</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.09</span>
+                                <span class="m-total-val">S/ 7.80</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">MILTON</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">1443</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">1443</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">0</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.04</span>
+                                <span class="m-total-val">S/ 2.70</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">VICTOR</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">135</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">150</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">15</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.01</span>
+                                <span class="m-total-val">S/ 15.30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">ELADIO</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">536</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">536</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">0</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.04</span>
+                                <span class="m-total-val">S/ 2.70</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">Mes: MAYO 2026</div>
+
+            <div class="sub-panel">
+                <div class="sub-panel-title">Medidor Principal</div>
+                <div class="data-row"><span>L. Anterior:</span> <strong>8034 kw</strong></div>
+                <div class="data-row"><span>L. Actual:</span> <strong>8119 kw</strong></div>
+                <div class="data-row"><span>Consumo:</span> <strong>85 kw</strong></div>
+                <div class="data-row"><span>Total Pagar:</span> <strong>S/ 85.10</strong></div>
+                <div class="data-row"><span>Recaudado:</span> <strong>S/ 88.30</strong></div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">Nombre</th>
+                            <th class="text-right">Ant</th>
+                            <th class="text-right">Act</th>
+                            <th class="text-right">Kw</th>
+                            <th class="text-right">Pagar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">JOEL</td>
+                            <td class="text-right">5025</td>
+                            <td class="text-right">5090</td>
+                            <td class="text-right">65</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 59.80</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">HENRY</td>
+                            <td class="text-right">1998</td>
+                            <td class="text-right">2005</td>
+                            <td class="text-right">7</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 8.90</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">MILTON</td>
+                            <td class="text-right">1443</td>
+                            <td class="text-right">1443</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 2.70</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">VICTOR</td>
+                            <td class="text-right">150</td>
+                            <td class="text-right">161</td>
+                            <td class="text-right">11</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 12.40</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">ELADIO</td>
+                            <td class="text-right">536</td>
+                            <td class="text-right">538</td>
+                            <td class="text-right">2</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 4.50</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mobile-card-view">
+                <div class="m-user-card">
+                    <div class="m-username">JOEL</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">5025</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">5090</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">65</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.09</span>
+                                <span class="m-total-val">S/ 59.80</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">HENRY</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">1998</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">2005</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">7</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.09</span>
+                                <span class="m-total-val">S/ 8.90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">MILTON</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">1443</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">1443</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">0</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.04</span>
+                                <span class="m-total-val">S/ 2.70</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">VICTOR</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">150</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">161</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">11</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.08</span>
+                                <span class="m-total-val">S/ 12.40</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">ELADIO</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">536</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">538</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">2</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.08</span>
+                                <span class="m-total-val">S/ 4.50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">Mes: JUNIO 2026</div>
+
+            <div class="sub-panel">
+                <div class="sub-panel-title">Medidor Principal</div>
+                <div class="data-row"><span>L. Anterior:</span> <strong>8119 kw</strong></div>
+                <div class="data-row"><span>L. Actual:</span> <strong>8210 kw</strong></div>
+                <div class="data-row"><span>Consumo:</span> <strong>91 kw</strong></div>
+                <div class="data-row"><span>Total Pagar:</span> <strong>S/ 90.40</strong></div>
+                <div class="data-row"><span>Recaudado:</span> <strong>S/ 93.40</strong></div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">Nombre</th>
+                            <th class="text-right">Ant</th>
+                            <th class="text-right">Act</th>
+                            <th class="text-right">Kw</th>
+                            <th class="text-right">Pagar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">JOEL</td>
+                            <td class="text-right">5090</td>
+                            <td class="text-right">5163</td>
+                            <td class="text-right">73</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 66.80</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">HENRY</td>
+                            <td class="text-right">2005</td>
+                            <td class="text-right">2010</td>
+                            <td class="text-right">5</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 7.10</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">MILTON</td>
+                            <td class="text-right">1443</td>
+                            <td class="text-right">1443</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 2.70</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">VICTOR</td>
+                            <td class="text-right">161</td>
+                            <td class="text-right">173</td>
+                            <td class="text-right">12</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 13.20</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">ELADIO</td>
+                            <td class="text-right">538</td>
+                            <td class="text-right">539</td>
+                            <td class="text-right">1</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 3.60</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mobile-card-view">
+                <div class="m-user-card">
+                    <div class="m-username">JOEL</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">5090</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">5163</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">73</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.04</span>
+                                <span class="m-total-val">S/ 66.80</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">HENRY</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">2005</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">2010</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">5</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.05</span>
+                                <span class="m-total-val">S/ 7.10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">MILTON</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">1443</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">1443</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">0</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.04</span>
+                                <span class="m-total-val">S/ 2.70</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">VICTOR</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">161</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">173</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">12</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.00</span>
+                                <span class="m-total-val">S/ 13.20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-user-card">
+                    <div class="m-username">ELADIO</div>
+                    <div class="m-grid-2col">
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">L. Ant:</span><span class="val">538</span></div>
+                            <div class="m-row-item"><span class="label">L. Act:</span><span class="val">539</span></div>
+                            <div class="m-row-item"><span class="label">Consumo:</span><span class="val">1</span></div>
+                        </div>
+                        <div class="m-col">
+                            <div class="m-row-item"><span class="label">Fijo:</span><span class="val">S/ 2.1000</span></div>
+                            <div class="m-row-item"><span class="label">Fuga:</span><span class="val">S/ 0.0000</span></div>
+                            <div class="m-row-item"><span class="label">Sistema:</span><span class="val">S/ 0.5620</span></div>
+                        </div>
+                        <div class="m-footer-pagar">
+                            <span class="m-pagar-label">Total</span>
+                            <div class="m-right-group">
+                                <span class="m-redondeo">r: +0.06</span>
+                                <span class="m-total-val">S/ 3.60</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="border-color: var(--accent-blue);">
+            <div class="card-title" style="color: var(--accent-blue);">RESUMEN TRIMESTRAL</div>
+            <div class="table-responsive resumen-trimestral-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">Nombre</th>
+                            <th class="text-right">Saldo</th>
+                            <th class="text-right">Subtotal</th>
+                            <th class="text-right">Total</th>
+                            <th class="text-right">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">JOEL</td>
+                            <td class="text-right" style="color: var(--text-main);">S/ 0.00</td>
+                            <td class="text-right" style="color: var(--text-muted);">S/ 191.60</td>
+                            <td class="text-right font-bold" style="color: var(--accent-total);">S/ 191.60</td>
+                            <td class="text-right font-bold" style="color: var(--accent-green);">PAGADO</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">HENRY</td>
+                            <td class="text-right" style="color: var(--text-main);">S/ 0.00</td>
+                            <td class="text-right" style="color: var(--text-muted);">S/ 23.80</td>
+                            <td class="text-right font-bold" style="color: var(--accent-total);">S/ 23.80</td>
+                            <td class="text-right font-bold" style="color: var(--accent-green);">PAGADO</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">MILTON</td>
+                            <td class="text-right" style="color: var(--accent-red);">Deuda: S/ 0.10</td>
+                            <td class="text-right" style="color: var(--text-muted);">S/ 8.10</td>
+                            <td class="text-right font-bold" style="color: var(--accent-total);">S/ 8.20</td>
+                            <td class="text-right font-bold" style="color: var(--accent-green);">PAGADO</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">VICTOR</td>
+                            <td class="text-right" style="color: var(--text-main);">S/ 0.00</td>
+                            <td class="text-right" style="color: var(--text-muted);">S/ 40.90</td>
+                            <td class="text-right font-bold" style="color: var(--accent-total);">S/ 40.90</td>
+                            <td class="text-right font-bold" style="color: var(--accent-green);">PAGADO</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="text-align: left;">ELADIO</td>
+                            <td class="text-right" style="color: var(--text-main);">S/ 0.00</td>
+                            <td class="text-right" style="color: var(--text-muted);">S/ 10.80</td>
+                            <td class="text-right font-bold" style="color: var(--accent-total);">S/ 10.80</td>
+                            <td class="text-right font-bold" style="color: var(--accent-red);">PENDIENTE</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="footer">
+            Sistema de cobranza grupal • Reporte Móvil
+        </div>
+    </div>
+</body>
+</html>
