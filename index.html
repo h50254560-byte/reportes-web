@@ -1,11 +1,297 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok HD Downloader Directo Puro</title>
-   
-<body>Hola como estas medusa loca</body>
+    <title>Reporte Trimestral Consolidado</title>
+    <style>
+        :root {
+            --bg-main: #121212;
+            --bg-card: #1E1E1E;
+            --bg-card-alt: #252526;
+            --border-color: #3F3F46;
+            --text-main: #FFFFFF;
+            --text-muted: #AAAAAA;
+            --accent-blue: #0088ED;
+            --accent-green: #4CAF50;
+            --accent-purple: #C586C0;
+            --accent-orange: #CE9178;
+            --accent-red: #F44747;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+        }
+
+        .header {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0 0 5px 0;
+            font-size: 22px;
+            color: var(--accent-orange);
+        }
+
+        .header p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            background-color: var(--bg-card-alt);
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .summary-item span {
+            color: var(--text-muted);
+        }
+
+        .summary-item strong {
+            float: right;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: var(--bg-card-alt);
+            color: var(--text-muted);
+            padding: 10px;
+            font-size: 11px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .badge-pagado {
+            background-color: #1E2A1E;
+            color: var(--accent-green);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            border: 1px solid #388E3C;
+            display: inline-block;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ENCABEZADO -->
+        <div class="header">
+            <h1>Reporte Trimestral Consolidado</h1>
+            <p>Periodo: <strong>JULIO - SEPTIEMBRE 2026</strong></p>
+        </div>
+
+        <!-- 1. MES DE JULIO -->
+        <div class="card">
+            <div class="card-title">Mes 1: Julio 2026</div>
+            <div class="summary-grid">
+                <div class="summary-item"><span>Consumo Total:</span> <strong style="color: var(--accent-purple);">95 kW</strong></div>
+                <div class="summary-item"><span>Suma Vecinos:</span> <strong style="color: var(--accent-green);">92 kW</strong></div>
+                <div class="summary-item"><span>Fuga Detectada:</span> <strong style="color: var(--accent-red);">3 kW</strong></div>
+                <div class="summary-item"><span>Total Recibo:</span> <strong style="color: var(--accent-orange);">S/ 90.00</strong></div>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vecino</th>
+                            <th class="text-right">Consumo</th>
+                            <th class="text-right">A Pagar</th>
+                            <th class="text-right">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold">Joel Cora</td>
+                            <td class="text-right">70 kW</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 68.50</td>
+                            <td class="text-right"><span class="badge-pagado">PAGADO</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Henry</td>
+                            <td class="text-right">6 kW</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 12.20</td>
+                            <td class="text-right"><span class="badge-pagado">PAGADO</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Milton</td>
+                            <td class="text-right">0 kW</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 4.50</td>
+                            <td class="text-right"><span class="badge-pagado">PAGADO</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 2. MES DE AGOSTO -->
+        <div class="card">
+            <div class="card-title">Mes 2: Agosto 2026</div>
+            <div class="summary-grid">
+                <div class="summary-item"><span>Consumo Total:</span> <strong style="color: var(--accent-purple);">100 kW</strong></div>
+                <div class="summary-item"><span>Suma Vecinos:</span> <strong style="color: var(--accent-green);">98 kW</strong></div>
+                <div class="summary-item"><span>Fuga Detectada:</span> <strong style="color: var(--accent-red);">2 kW</strong></div>
+                <div class="summary-item"><span>Total Recibo:</span> <strong style="color: var(--accent-orange);">S/ 92.50</strong></div>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vecino</th>
+                            <th class="text-right">Consumo</th>
+                            <th class="text-right">A Pagar</th>
+                            <th class="text-right">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold">Joel Cora</td>
+                            <td class="text-right">70 kW</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 69.10</td>
+                            <td class="text-right"><span class="badge-pagado">PAGADO</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Henry</td>
+                            <td class="text-right">6 kW</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 12.50</td>
+                            <td class="text-right"><span class="badge-pagado">PAGADO</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Milton</td>
+                            <td class="text-right">0 kW</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 4.60</td>
+                            <td class="text-right"><span class="badge-pagado">PAGADO</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3. MES DE SEPTIEMBRE -->
+        <div class="card">
+            <div class="card-title">Mes 3: Septiembre 2026</div>
+            <div class="summary-grid">
+                <div class="summary-item"><span>Consumo Total:</span> <strong style="color: var(--accent-purple);">105 kW</strong></div>
+                <div class="summary-item"><span>Suma Vecinos:</span> <strong style="color: var(--accent-green);">101 kW</strong></div>
+                <div class="summary-item"><span>Fuga Detectada:</span> <strong style="color: var(--accent-red);">4 kW</strong></div>
+                <div class="summary-item"><span>Total Recibo:</span> <strong style="color: var(--accent-orange);">S/ 95.00</strong></div>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vecino</th>
+                            <th class="text-right">Consumo</th>
+                            <th class="text-right">A Pagar</th>
+                            <th class="text-right">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold">Joel Cora</td>
+                            <td class="text-right">70 kW</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 70.00</td>
+                            <td class="text-right"><span class="badge-pagado">PAGADO</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Henry</td>
+                            <td class="text-right">6 kW</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 13.00</td>
+                            <td class="text-right"><span class="badge-pagado">PAGADO</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Milton</td>
+                            <td class="text-right">0 kW</td>
+                            <td class="text-right font-bold" style="color: var(--accent-blue);">S/ 4.80</td>
+                            <td class="text-right"><span class="badge-pagado">PAGADO</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            Sistema de Control Vecinal • Reporte Consolidado de 3 Meses
+        </div>
+    </div>
+
+</body>
 </html>
