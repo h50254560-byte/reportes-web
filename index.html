@@ -248,23 +248,19 @@
             margin-bottom: 10px;
         }
 
+        /* Forzar a que el contenedor externo que pone Netlify ocupe todo el ancho */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            margin: 0;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            /* Asegura que el body ocupe todo el ancho */
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 10px !important;
+            box-sizing: border-box;
         }
 
         .container {
-            width: 100%;
-            max-width: 800px;
+            width: 100% !important;
+            max-width: 800px !important;
+            margin: 0 auto !important;
             box-sizing: border-box;
-            /* Vital para que el padding no rompa el ancho */
         }
     </style>
 </head>
@@ -273,7 +269,7 @@
     <div class="container">
         <!-- HEADER -->
         <div class="header">
-            <h1>REPORTE TRIMESTRAL2</h1>
+            <h1>REPORTE TRIMESTRAL</h1>
             <p>Periodo: <strong>ABRIL 2026 - JUNIO 2026</strong></p>
         </div>
 
