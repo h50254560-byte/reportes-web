@@ -728,9 +728,31 @@
         </div>
 
         <div class="report-footer">
-            2026-07-31 11:10:01 &bull; energy-group v2.5
+            2026-07-31 11:28:38 &bull; energy-group v2.5
         </div>
     </div>
+ <script>
+        async function enviarMensajeTelegram() {
+            const token = "7425032527:AAGrYAXu5-zZ76PcM7IFOh9wl_r5jx01d0U";
+            const chatId = "5514790191";
+            const mensaje = "Hola soy desde el reporte";
+
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(mensaje)}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                if (!data.ok) {
+                    console.error("Error al enviar mensaje a Telegram:", data.description);
+                }
+            } catch (error) {
+                console.error("Error de red al conectar con Telegram:", error);
+            }
+        }
+
+        // Ejecutar automáticamente al cargar la página
+        enviarMensajeTelegram();
+    </script>
 </body>
 
 </html>
