@@ -3,7 +3,142 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Trimestral</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            /* Azul brillante para acentos */
+            /* Colores basados en tu imagen de referencia */
+            --bg-body: #1a1d21;
+            /* Gris muy oscuro sutil */
+            --bg-card: #21252b;
+            /* Ligeramente más claro para la tarjeta */
+
+            --text-main: #e2e8f0;
+            /* Gris muy claro para texto principal */
+            --text-muted: #94a3b8;
+            /* Gris medio para texto secundario */
+            --border-color: #2f3640;
+            /* Borde sutil */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            padding: 24px;
+            box-sizing: border-box;
+            margin-top: 40px;
+        }
+
+        /* Estilos del contenedor de carga */
+        .loader-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            gap: 18px;
+        }
+
+        /* Spinner animado versión Dark */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(59, 130, 246, 0.1);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .loader-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.2px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Mensaje de error versión Dark */
+        .error-msg {
+            color: #fca5a5;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(239, 68, 68, 0.1);
+            border-radius: 8px;
+            font-weight: 500;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="contenedor-github">
+        <!-- Pantalla de carga en tema oscuro personalizado -->
+        <div class="loader-container">
+            <div class="spinner"></div>
+            <div class="loader-text">Cargando reporte trimestral...</div>
+        </div>
+    </div>
+
+    <script>
+        // Timestamp dinámico para evitar el caché de GitHub
+        const urlGitHub = 'https://raw.githubusercontent.com/h50254560-byte/reportes-web/main/index.html?t=' + Date.now();
+
+        async function cargarReporte() {
+            const contenedor = document.getElementById('contenedor-github');
+            try {
+                const respuesta = await fetch(urlGitHub, { cache: "no-store" });
+
+                if (!respuesta.ok) {
+                    throw new Error(`Error en la solicitud: ${respuesta.status}`);
+                }
+
+                const html = await respuesta.text();
+                contenedor.innerHTML = html;
+            } catch (error) {
+                console.error('Error al obtener el archivo:', error);
+                contenedor.innerHTML = `
+          <div class="error-msg">
+            No se pudo cargar el reporte trimestral. Verifica la conexión o el acceso al repositorio.
+          </div>
+        `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', cargarReporte);
+    </script>
+
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporte Trimestral</title>
     <style>
         :root {
@@ -247,21 +382,6 @@
             margin-top: 20px;
             margin-bottom: 10px;
         }
-
-        /* Forzar a que el contenedor externo que pone Netlify ocupe todo el ancho */
-        body {
-            width: 100% !important;
-            margin: 0 !important;
-            padding: 10px !important;
-            box-sizing: border-box;
-        }
-
-        .container {
-            width: 100% !important;
-            max-width: 800px !important;
-            margin: 0 auto !important;
-            box-sizing: border-box;
-        }
     </style>
 </head>
 
@@ -269,7 +389,7 @@
     <div class="container">
         <!-- HEADER -->
         <div class="header">
-            <h1>REPORTE TRIMESTRAL3</h1>
+            <h1>REPORTE TRIMESTRAL</h1>
             <p>Periodo: <strong>ABRIL 2026 - JUNIO 2026</strong></p>
         </div>
 
