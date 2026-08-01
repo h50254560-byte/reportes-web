@@ -1,6 +1,10 @@
 const CACHE_NAME = 'pwa-test-v2';
 const urlsToCache = [
-
+    'index.html',
+    'styles.css',
+    'manifest.json',
+    'icon-192.png',
+    'icon-512.png'
 ];
 
 // Instalación del Service Worker y almacenamiento en caché
