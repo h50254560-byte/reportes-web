@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi PWA de Prueba</title>
+    
+    <!-- Enlace al manifiesto -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Color de la barra de navegación en móviles -->
+    <meta name="theme-color" content="#4f46e5">
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            text-align: center;
+            padding: 2rem;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        button {
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #4338ca;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>¡Hola, PWA! 🚀</h1>
+        <p>Esta es una aplicación web progresiva de prueba lista para instalarse en tu dispositivo.</p>
+        <button id="saludarBtn">Hacer clic</button>
+    </div>
+
+    <script>
+        // Registrar el Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
+                    .catch(err => console.log('Error al registrar el Service Worker:', err));
+            });
+        }
+
+        // Interacción simple
+        document.getElementById('saludarBtn').addEventListener('click', () => {
+            alert('¡Funciona correctamente como PWA!');
+        });
+    </script>
+</body>
+</html>
